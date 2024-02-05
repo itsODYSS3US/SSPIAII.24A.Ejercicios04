@@ -32,6 +32,12 @@ plt.Profit.Data
 
 #### Gómez Plascencia Waldo.<br> 
 Conclusión
+La regresión lineal multivariable fue interesante en este caso debido a que 
+al finalizar la selección, el modelo solo terminó con variables, me queda la duda de
+si hay casos en los que el modelo es mejor con más de dos y el hecho de que aun no
+he aprendido a identificar los resultados con base en las graficas generadas me complicada
+un poco el terminar de comprender las regresiones lineales, pero de igual manera fue curioso
+ver como es la seleción bidireccional.
 
 #### Ascencio Padilla Isaac Ulises.<br> 
 Conclusión
