@@ -1,0 +1,51 @@
+---
+title: "Regresión Lineal Múltiple - Eliminación bidireccional"
+author: "SSPIAII_Equipo4"
+date: "2024-02-05"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Integrantes:<br> 
+  1. Gómez Plascencia Waldo.<br>
+  2. Ascencio Padilla Isaac Ulises.<br>
+  3. Vidrio Lizaola Alfonso Manuel.<br>
+  4. Becerra Ramírez Alejandro.<br>
+  5. Aceves Díaz César Alejandro.<br>
+  
+# ¿Qué es la eliminación bidireccional? 
+La eliminación bidireccional, también conocida como método “stepwise”, es un procedimiento utilizado en la regresión lineal múltiple para seleccionar automáticamente las variables más significativas para el modelo.<br>
+En este método, se introducen todas las variables en la ecuación y luego se van excluyendo una tras otra. Aquella variable que tenga la menor correlación parcial con la variable dependiente será la primera en ser considerada para su eliminación. Si satisface el criterio de eliminación, se eliminará.<br>
+
+# Proceso de selección de variables. 
+```{r, echo=FALSE}
+proceso <- readLines("proceso_seleccion_variables.R")
+load("Grafica")
+print(proceso)
+plt.Profit.Data
+```
+
+# Conclusiones personales. 
+
+#### Gómez Plascencia Waldo.<br> 
+Conclusión
+
+#### Ascencio Padilla Isaac Ulises.<br> 
+Conclusión
+
+#### Becerra Ramírez Alejandro.<br> 
+Conclusión
+
+#### Vidrio Lizaola Alfonso Manuel.<br> 
+Conclusión
+
+#### Aceves Díaz César Alejandro.<br> 
+Inicialmente, lo que me confundía era el tema bidireccional puesto que en árboles
+esto es completamente diferente partiendo desde el incio y el fin hacia el centro
+de este, sin embargo, mis compañeros me ayudaron a entender que se hace una evaluación
+del nivel de significancia que tienen las variables para poder determinar cuál es la 
+de mejor y cuál es la de peor, para poder eliminar o trabajar con alguna de estas dos 
+en las próximas iteraciones.

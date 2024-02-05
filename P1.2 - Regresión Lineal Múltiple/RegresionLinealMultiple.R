@@ -39,7 +39,7 @@ repeat {
     
     # Realiza eliminación hacia atrás
     Auxiliar <- step(Auxiliar, direction = "backward")
-    
+    save(Auxiliar, file = "Objetosrmarkdown")
     # Comprueba si se han agregado o eliminado variables
     if (identical(Auxiliar, mdl.Regresor)) {
         break  # Si no se han realizado cambios, termina el bucle
@@ -69,4 +69,9 @@ plt.Profit.Data <- plt.Profit +
             colour = "red3")
 
 
+#Muestra la gráfica.
 plt.Profit.Data
+
+#Almacena los objetos a continuación para poder crear el gráfico en Rmarkdown.
+save(plt.Profit.Data, df.Startups, df.Startups.Train, df.Startups.Test, mdl.Regresor,
+     file = "Grafica")
