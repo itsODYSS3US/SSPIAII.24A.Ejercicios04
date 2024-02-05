@@ -35,6 +35,12 @@ Conclusión
 
 #### Ascencio Padilla Isaac Ulises.<br> 
 Conclusión
+La parte más complicada para entender el algoritmo es la parte de la eliminación
+hacia delante y hacia atrás porque puede resultar confuso la manera en la que se
+debe hacer, ya que se menciona que se debe eliminar la variable con la mayor estadística
+de prueba y después la variable con el menor estadístico de prueba hasta llegar al mejor
+modelo, y al ser una regresión múltiple, si se considera que el mejor modelo es solo con 
+una variable, se convierte en una regresión simple.
 
 #### Becerra Ramírez Alejandro.<br> 
 Conclusión
