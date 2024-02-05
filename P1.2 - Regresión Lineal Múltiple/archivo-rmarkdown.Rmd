@@ -44,6 +44,9 @@ una variable, se convierte en una regresión simple.
 
 #### Becerra Ramírez Alejandro.<br> 
 Conclusión
+Lo que más se nos generó duda del algoritmo fue al momento de aplicar la función en la que
+elimina la variable con mayor estadística de prueba y luego la de menor, ya qué no estabamos
+seguro si recorría todo el dataset para poder encontrar el mejor modelo.
 
 #### Vidrio Lizaola Alfonso Manuel.<br> 
 Conclusión
