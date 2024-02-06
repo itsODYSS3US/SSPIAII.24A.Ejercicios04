@@ -55,7 +55,8 @@ elimina la variable con mayor estadística de prueba y luego la de menor, ya qu�
 seguro si recorría todo el dataset para poder encontrar el mejor modelo.
 
 #### Vidrio Lizaola Alfonso Manuel.<br> 
-Conclusión
+Lo que se me dificultó más en esta actividad no fue entender el funcionamiento del algoritmo, sino el cómo se podía 
+implementar en R. No sabía cómo hacerlo, pero con la ayuda de mis compañeros y algunos ejemplos, pudimos implementar el algoritmo y entenderlo mejor.
 
 #### Aceves Díaz César Alejandro.<br> 
 Inicialmente, lo que me confundía era el tema bidireccional puesto que en árboles
