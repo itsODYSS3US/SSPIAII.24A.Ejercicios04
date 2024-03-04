@@ -5,8 +5,9 @@
 # Aceves Díaz César Alejandro.
 
 source("LibrariesPreprocess.R")
-
+setwd("C:/Users/waldi/Documents/8vo semestre/SSPIA II/RepositorioEquipoEjercicios/SSPIAII.24A.Ejercicios04/P1.2 - Regresión Lineal Múltiple")
 #Carga del csv que contiene el conjunto de datos.
+source("LibrariesPreprocess.R")
 df.Startups <- read.csv("50_Startups.csv")
 set.seed(12345)
 
@@ -28,7 +29,7 @@ df.Startups.Test <- subset(df.Startups, Split == F)
 
 
 #Regresión lineal multiple  lm()
-mdl.Regresor <- lm(formula = Profit ~ Marketing.Spend + Administration + R.D.Spend, data = df.Startups.Train)
+mdl.Regresor <- lm(formula = Profit ~ ., data = df.Startups.Train)
 summary(mdl.Regresor)
 mdl.Predict <- predict(object = mdl.Regresor, newdata = df.Startups.Test)
 
