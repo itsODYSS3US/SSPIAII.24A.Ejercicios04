@@ -1,111 +1,24 @@
 source("Lib.Preprocess.R")
+set.seed(1991)
 options(scipen = 999)
 df.Wine <- read.csv(file = "Datasets/WineQT.csv", header  = T, stringsAsFactors = F)
 
 df.Wine$Id <-NULL
 
-
-
-par(mfrow=c(3, 4))
-
-#Datos atípicos
-boxplot(df.Wine$quality, main="Quality")
-boxplot(df.Wine$fixed.acidity, main="Fixed Acidity")
-boxplot(df.Wine$volatile.acidity, main="Volatile Acidity")
-boxplot(df.Wine$citric.acid, main="Citric Acid")
-boxplot(df.Wine$residual.sugar, main="Residual Sugar")
-boxplot(df.Wine$chlorides, main="Chlorides")
-boxplot(df.Wine$free.sulfur.dioxide, main="Free Sulfur Dioxide")
-boxplot(df.Wine$total.sulfur.dioxide, main="Total Sulfur Dioxide")
-boxplot(df.Wine$density, main="Density")
-boxplot(df.Wine$pH, main="pH")
-boxplot(df.Wine$sulphates, main="Sulphates")
-boxplot(df.Wine$alcohol, main="Alcohol")
+boxplot(df.Wine$quality)
+boxplot(df.Wine$fixed.acidity)
+boxplot(df.Wine$volatile.acidity)
+boxplot(df.Wine$citric.acid)
+boxplot(df.Wine$residual.sugar)
+boxplot(df.Wine$chlorides)
+boxplot(df.Wine$free.sulfur.dioxide)
+boxplot(df.Wine$total.sulfur.dioxide)
+boxplot(df.Wine$density)
+boxplot(df.Wine$pH)
+boxplot(df.Wine$sulphates)
+boxplot(df.Wine$alcohol)
 
 boxplot(df.Wine)
-
-
-# Calcular la media y la desviación estándar
-# vector <- c()
-# vector <- append(mean(df.Wine$quality), mean(df.Wine$fixed.acidity))
-# vector
-
-medias <- colMeans(df.Wine)
-medias
-desviacion_estandar <- apply(df.Wine, 2, sd)
-
-#Obtener el número de columnas del dataset.
-vector_medias <- numeric(length(df.Wine))
-
-# Calcular la media de cada columna y almacenarla en el vector_medias.
-for (i in 1:ncol(df.Wine)) {
-  vector_medias[i] <- mean(df.Wine[, i])
-}
-vector_medias
-
-vector_desviaciones_estandar <- numeric(length(df.Wine))
-for(i in 1:ncol(df.Wine)){
-    vector_desviaciones_estandar[i] <- sd(df.Wine[[i]])
-}
-vector_desviaciones_estandar
-
-# desviacion_estandar <- apply(df.Wine, 2, sd)
-
-# Definir un umbral para identificar valores atípicos
-umbral <-  2 
-
-# Identificar valores atípicos
-datos_limpio <- df.Wine
-
-
-for(i in 1:ncol(df.Wine)){
-  
-  valores_atipicos <- df.Wine[,i][abs(df.Wine[,i] - vector_medias[i]) > umbral * vector_desviaciones_estandar[i]]
-  
-  
-  datos_limpio[,i][datos_limpio[,i] %in% valores_atipicos] <- vector_medias[i]
-}
-View(datos_limpio)
-
-
-val_atipicos_fixedAcidity <- df.Wine$fixed.acidity[abs(df.Wine$fixed.acidity-vector_medias[1])> umbral * vector_desviaciones_estandar[1]]
-datos_limpio$fixed.acidity[datos_limpio$fixed.acidity %in% val_atipicos_fixedAcidity] <- vector_medias[1]
-
-
-val_atipicos_residualsugar <- df.Wine$residual.sugar[abs(df.Wine$residual.sugar-vector_medias[4])> 0.4 * vector_desviaciones_estandar[4]]
-datos_limpio$residual.sugar[datos_limpio$residual.sugar %in% val_atipicos_residualsugar] <- vector_medias[4]
-
-val_atipicos_chlorides <- df.Wine$chlorides[abs(df.Wine$chlorides-vector_medias[5])> 0.4 * vector_desviaciones_estandar[5]]
-datos_limpio$chlorides[datos_limpio$chlorides %in% val_atipicos_chlorides] <- vector_medias[5]
-
-# boxplot(datos_limpio$quality, main="Quality")
-# boxplot(datos_limpio$fixed.acidity, main="Fixed Acidity")
-
-# boxplot(datos_limpio$volatile.acidity, main="Volatile Acidity")
-# boxplot(datos_limpio$citric.acid, main="Citric Acid")
-# boxplot(datos_limpio$residual.sugar, main="Residual Sugar")
-boxplot(datos_limpio$chlorides, main="Chlorides")
-# boxplot(datos_limpio$free.sulfur.dioxide, main="Free Sulfur Dioxide")
-boxplot(datos_limpio$total.sulfur.dioxide, main="Total Sulfur Dioxide")
-# boxplot(datos_limpio$density, main="Density")
-# boxplot(datos_limpio$pH, main="pH")
-boxplot(datos_limpio$sulphates, main="Sulphates")
-# boxplot(datos_limpio$alcohol, main="Alcohol")
-
-summary(datos_limpio)
-
-# Identifica los índices de los valores atípicos
-indices_atipicos <- which(abs(df$variable - media) > umbral * desviacion)
-
-# Reemplaza los valores atípicos por la media
-df$variable[indices_atipicos] <- media
-
-
-# Imprimir los resultados
-print("Datos originales:")
-print(datos)
-print("Datos sin valores atípicos:")
-print(datos_limpio)
 
 
 #Entrenamiento y prueba
@@ -124,11 +37,91 @@ corrplot(cor.Wine,
         col = viridis(n = 5, direction = 1),
         title = "Correlación WineQT")
 
+#density
+#citric.acid
+#total.sulfur.dioxide
 gbm.fit <- gbm(quality ~ ., data = df.Wine.Train, distribution = "gaussian", n.trees = 1000, interaction.depth = 3, shrinkage = 0.01, cv.folds = 5, verbose = T)
-
-
 summary(gbm.fit)
 
-predictions <- predict(gbm.fit, newd = df.Wine.Train, distribution = "gaussian", n.trees = 1000)
+gbm.fit2 <- gbm(quality ~ alcohol + volatile.acidity + sulphates, data = df.Wine.Train, distribution = "gaussian", n.trees = 1000, interaction.depth = 3, shrinkage = 0.01, cv.folds = 5, verbose = T)
+summary(gbm.fit2)
+
+gbm.fit3 <- gbm(quality ~ density + citric.acid + total.sulfur.dioxide, data = df.Wine.Train, distribution = "gaussian", n.trees = 1000, interaction.depth = 3, shrinkage = 0.01, cv.folds = 5, verbose = T)
+summary(gbm.fit3)
+
+mdl.Predict <- predict(object = gbm.fit, newdata = df.Wine.Test)
+mdl.Predict2 <- predict(object = gbm.fit2, newdata = df.Wine.Test)
+mdl.Predict3 <- predict(object = gbm.fit3, newdata = df.Wine.Test)
 
 
+Y.pred <- ifelse(mdl.Predict >= 1.5 & mdl.Predict <= 2.5, 2,
+                 ifelse(mdl.Predict > 2.5 & mdl.Predict <= 3.5, 3,
+                        ifelse(mdl.Predict > 3.5 & mdl.Predict <= 4.5, 4,
+                               ifelse(mdl.Predict > 4.5 & mdl.Predict <= 5.5, 5,
+                                      ifelse(mdl.Predict > 5.5 & mdl.Predict <= 6.5, 6,
+                                             ifelse(mdl.Predict > 6.5 & mdl.Predict <= 7.5, 7,
+                                                    ifelse(mdl.Predict > 7.5 & mdl.Predict <= 8.5, 8, NA)))))))
+
+Y.pred2 <- ifelse(mdl.Predict2 >= 1.5 & mdl.Predict2 <= 2.5, 2,
+                 ifelse(mdl.Predict2 > 2.5 & mdl.Predict2 <= 3.5, 3,
+                        ifelse(mdl.Predict2 > 3.5 & mdl.Predict2 <= 4.5, 4,
+                               ifelse(mdl.Predict2 > 4.5 & mdl.Predict2 <= 5.5, 5,
+                                      ifelse(mdl.Predict2 > 5.5 & mdl.Predict2 <= 6.5, 6,
+                                             ifelse(mdl.Predict2 > 6.5 & mdl.Predict2 <= 7.5, 7,
+                                                    ifelse(mdl.Predict2 > 7.5 & mdl.Predict2 <= 8.5, 8, NA)))))))
+
+Y.pred3 <- ifelse(mdl.Predict3 >= 1.5 & mdl.Predict3 <= 2.5, 2,
+                 ifelse(mdl.Predict3 > 2.5 & mdl.Predict3 <= 3.5, 3,
+                        ifelse(mdl.Predict3 > 3.5 & mdl.Predict3 <= 4.5, 4,
+                               ifelse(mdl.Predict3 > 4.5 & mdl.Predict3 <= 5.5, 5,
+                                      ifelse(mdl.Predict3 > 5.5 & mdl.Predict3 <= 6.5, 6,
+                                             ifelse(mdl.Predict3 > 6.5 & mdl.Predict3 <= 7.5, 7,
+                                                    ifelse(mdl.Predict3 > 7.5 & mdl.Predict3 <= 8.5, 8, NA)))))))
+
+
+
+matriz <- table(df.Wine.Test$quality, Y.pred)
+matriz
+
+matriz2 <- table(df.Wine.Test$quality, Y.pred2)
+matriz2
+
+matriz3 <- table(df.Wine.Test$quality, Y.pred3)
+matriz3
+
+
+# Crear un data frame con los valores reales y predichos para cada modelo
+df_compare <- data.frame(
+  Quality_Real = df.Wine.Test$quality,
+  Quality_Predicted_Model1 = mdl.Predict,
+  Quality_Predicted_Model2 = mdl.Predict2,
+  Quality_Predicted_Model3 = mdl.Predict3
+)
+
+# Gráfico de dispersión para el primer modelo
+p1 <- ggplot(df_compare, aes(x = Quality_Real, y = Quality_Predicted_Model1)) +
+  geom_point(color = "darkblue") +
+  geom_abline(intercept = 0, slope = 1, color = "darkred") +
+  labs(title = "Modelo 1", x = "Calidad Real", y = "Calidad Predicha")
+
+# Gráfico de dispersión para el segundo modelo
+p2 <- ggplot(df_compare, aes(x = Quality_Real, y = Quality_Predicted_Model2)) +
+  geom_point(color = "#008b15") +
+  geom_abline(intercept = 0, slope = 1, color = "darkred") +
+  labs(title = "Modelo 2", x = "Calidad Real", y = "Calidad Predicha")
+
+# Gráfico de dispersión para el tercer modelo
+p3 <- ggplot(df_compare, aes(x = Quality_Real, y = Quality_Predicted_Model3)) +
+  geom_point(color = "#c800ff") +
+  geom_abline(intercept = 0, slope = 1, color = "darkred") +
+  labs(title = "Modelo 3", x = "Calidad Real", y = "Calidad Predicha")
+
+# Mostrar los gráficos
+p1
+p2
+p3
+
+library(gridExtra)
+
+# Combinar los tres gráficos en una cuadrícula
+grid.arrange(p1, p2, p3, ncol = 3)
