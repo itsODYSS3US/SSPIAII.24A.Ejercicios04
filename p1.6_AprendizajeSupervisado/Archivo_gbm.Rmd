@@ -189,7 +189,7 @@ Realmente no fue tan complicado comprender el algoritmo ya que es parecido a el 
 A lo que investigué el gbm se utiliza en la predicción del fracaso empresarial, este algoritmo lo que hace es predecir que variables fueron las más relevantes para llegar a la quiebra, esto lo hacen utilizando datos como son las cifras de ventas, el activo y los gastos financieros.
 
 #### Vidrio Lizaola Alfonso Manuel.<br>
-
+Al inicio, lo que más se me dificultó fue entender el funcionamiento del algoritmo y cómo lo podíamos implementar con los datos que teníamos. Pero con la librería gbm no fue tan complicado, y con un poco de investigación logré entender para qué son los parámetros que necesita gbm y un poco cómo es que funciona internamente.
 
 #### Aceves Díaz César Alejandro.<br> 
 Lo más complicado y tedioso fue la limpieza de variables debido a la cantidad de datos 
