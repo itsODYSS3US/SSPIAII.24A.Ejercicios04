@@ -1,0 +1,194 @@
+---
+html_document:
+  toc: true
+  toc_depth: 3
+  toc_float: true
+  collapsed: true
+  smooth_scroll: true
+  theme: journal
+  highlight: kate
+  df_print: paged
+  code_folding: show
+author: "SSPIAII_Equipo4"
+date: "2024-03-05"
+title: "P1.6 - Aprendizaje supervisado"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Integrantes:<br> 
+  1. Gómez Plascencia Waldo.<br>
+  2. Ascencio Padilla Isaac Ulises.<br>
+  3. Vidrio Lizaola Alfonso Manuel.<br>
+  4. Becerra Ramírez Alejandro.<br>
+  5. Aceves Díaz César Alejandro.<br>
+
+## Bases teórico-matematicas y Funcionamiento
+
+
+
+## Matriz de Correlación
+```{r message=FALSE, warning=FALSE}
+source("Lib.Preprocess.R")
+df.Wine <- read.csv(file = "WineQT.csv", header  = T, stringsAsFactors = F)
+
+#Matriz de correlación.
+cor.Wine <- cor(df.Wine)
+corrplot(cor.Wine,
+        addCoef.col = "black",
+        insig = "label_sig",
+        method = "pie",
+        type = "full",
+        diag = F,
+        col = viridis(n = 5, direction = 1),
+        title = "Correlación WineQT")
+
+
+```
+
+## Modelos
+```{r message=FALSE, warning=FALSE}
+source("Lib.Preprocess.R")
+set.seed(1991)
+options(scipen = 999)
+df.Wine <- read.csv(file = "WineQT.csv", header  = T, stringsAsFactors = F)
+df.Wine$Id <-NULL
+
+#Entrenamiento y prueba
+Split <- sample.split(Y = df.Wine$alcohol, SplitRatio = 0.8)
+df.Wine.Train <- subset(df.Wine, Split == T)
+df.Wine.Test <- subset(df.Wine, Split == F)
+
+gbm.fit <- gbm(quality ~ ., data = df.Wine.Train, distribution = "gaussian", n.trees = 1000, interaction.depth = 3, shrinkage = 0.01, cv.folds = 5, verbose = T)
+summary(gbm.fit)
+
+gbm.fit2 <- gbm(quality ~ alcohol + volatile.acidity + sulphates, data = df.Wine.Train, distribution = "gaussian", n.trees = 1000, interaction.depth = 3, shrinkage = 0.01, cv.folds = 5, verbose = T)
+summary(gbm.fit2)
+
+gbm.fit3 <- gbm(quality ~ density + citric.acid + total.sulfur.dioxide, data = df.Wine.Train, distribution = "gaussian", n.trees = 1000, interaction.depth = 3, shrinkage = 0.01, cv.folds = 5, verbose = T)
+summary(gbm.fit3)
+```
+
+## Predicciones
+```{r message=FALSE, warning=FALSE}
+source("Lib.Preprocess.R")
+set.seed(1991)
+options(scipen = 999)
+df.Wine <- read.csv(file = "WineQT.csv", header  = T, stringsAsFactors = F)
+df.Wine$Id <-NULL
+
+#Entrenamiento y prueba
+Split <- sample.split(Y = df.Wine$alcohol, SplitRatio = 0.8)
+df.Wine.Train <- subset(df.Wine, Split == T)
+df.Wine.Test <- subset(df.Wine, Split == F)
+
+#Modelos
+mdl.Predict <- predict(object = gbm.fit, newdata = df.Wine.Test)
+mdl.Predict2 <- predict(object = gbm.fit2, newdata = df.Wine.Test)
+mdl.Predict3 <- predict(object = gbm.fit3, newdata = df.Wine.Test)
+
+Y.pred <- ifelse(mdl.Predict >= 1.5 & mdl.Predict <= 2.5, 2,
+                 ifelse(mdl.Predict > 2.5 & mdl.Predict <= 3.5, 3,
+                        ifelse(mdl.Predict > 3.5 & mdl.Predict <= 4.5, 4,
+                               ifelse(mdl.Predict > 4.5 & mdl.Predict <= 5.5, 5,
+                                      ifelse(mdl.Predict > 5.5 & mdl.Predict <= 6.5, 6,
+                                             ifelse(mdl.Predict > 6.5 & mdl.Predict <= 7.5, 7,
+                                                    ifelse(mdl.Predict > 7.5 & mdl.Predict <= 8.5, 8, NA)))))))
+
+Y.pred2 <- ifelse(mdl.Predict2 >= 1.5 & mdl.Predict2 <= 2.5, 2,
+                 ifelse(mdl.Predict2 > 2.5 & mdl.Predict2 <= 3.5, 3,
+                        ifelse(mdl.Predict2 > 3.5 & mdl.Predict2 <= 4.5, 4,
+                               ifelse(mdl.Predict2 > 4.5 & mdl.Predict2 <= 5.5, 5,
+                                      ifelse(mdl.Predict2 > 5.5 & mdl.Predict2 <= 6.5, 6,
+                                             ifelse(mdl.Predict2 > 6.5 & mdl.Predict2 <= 7.5, 7,
+                                                    ifelse(mdl.Predict2 > 7.5 & mdl.Predict2 <= 8.5, 8, NA)))))))
+
+Y.pred3 <- ifelse(mdl.Predict3 >= 1.5 & mdl.Predict3 <= 2.5, 2,
+                 ifelse(mdl.Predict3 > 2.5 & mdl.Predict3 <= 3.5, 3,
+                        ifelse(mdl.Predict3 > 3.5 & mdl.Predict3 <= 4.5, 4,
+                               ifelse(mdl.Predict3 > 4.5 & mdl.Predict3 <= 5.5, 5,
+                                      ifelse(mdl.Predict3 > 5.5 & mdl.Predict3 <= 6.5, 6,
+                                             ifelse(mdl.Predict3 > 6.5 & mdl.Predict3 <= 7.5, 7,
+                                                    ifelse(mdl.Predict3 > 7.5 & mdl.Predict3 <= 8.5, 8, NA)))))))
+
+
+
+matriz <- table(df.Wine.Test$quality, Y.pred)
+matriz
+
+matriz2 <- table(df.Wine.Test$quality, Y.pred2)
+matriz2
+
+matriz3 <- table(df.Wine.Test$quality, Y.pred3)
+matriz3
+```
+
+## Gráfico de dispersión para los 3 modelos
+```{r message=FALSE, warning=FALSE}
+source("Lib.Preprocess.R")
+set.seed(1991)
+options(scipen = 999)
+df.Wine <- read.csv(file = "WineQT.csv", header  = T, stringsAsFactors = F)
+df.Wine$Id <-NULL
+
+#Entrenamiento y prueba
+Split <- sample.split(Y = df.Wine$alcohol, SplitRatio = 0.8)
+df.Wine.Train <- subset(df.Wine, Split == T)
+df.Wine.Test <- subset(df.Wine, Split == F)
+
+#Modelos
+mdl.Predict <- predict(object = gbm.fit, newdata = df.Wine.Test)
+mdl.Predict2 <- predict(object = gbm.fit2, newdata = df.Wine.Test)
+mdl.Predict3 <- predict(object = gbm.fit3, newdata = df.Wine.Test)
+
+# Crear un data frame con los valores reales y predichos para cada modelo
+df_compare <- data.frame(
+  Quality_Real = df.Wine.Test$quality,
+  Quality_Predicted_Model1 = mdl.Predict,
+  Quality_Predicted_Model2 = mdl.Predict2,
+  Quality_Predicted_Model3 = mdl.Predict3
+)
+
+# Gráfico de dispersión para el primer modelo
+p1 <- ggplot(df_compare, aes(x = Quality_Real, y = Quality_Predicted_Model1)) +
+  geom_point(color = "darkblue") +
+  geom_abline(intercept = 0, slope = 1, color = "darkred") +
+  labs(title = "Modelo 1", x = "Calidad Real", y = "Calidad Predicha")
+
+# Gráfico de dispersión para el segundo modelo
+p2 <- ggplot(df_compare, aes(x = Quality_Real, y = Quality_Predicted_Model2)) +
+  geom_point(color = "#008b15") +
+  geom_abline(intercept = 0, slope = 1, color = "darkred") +
+  labs(title = "Modelo 2", x = "Calidad Real", y = "Calidad Predicha")
+
+# Gráfico de dispersión para el tercer modelo
+p3 <- ggplot(df_compare, aes(x = Quality_Real, y = Quality_Predicted_Model3)) +
+  geom_point(color = "#c800ff") +
+  geom_abline(intercept = 0, slope = 1, color = "darkred") +
+  labs(title = "Modelo 3", x = "Calidad Real", y = "Calidad Predicha")
+
+# Combinar los tres gráficos en una cuadrícula
+library(gridExtra)
+grid.arrange(p1, p2, p3, ncol = 3)
+```
+
+## Conclusiones personales 
+
+#### Gómez Plascencia Waldo.<br> 
+
+
+#### Ascencio Padilla Isaac Ulises.<br> 
+
+
+#### Becerra Ramírez Alejandro.<br>
+Realmente no fue tan complicado comprender el algoritmo ya que es parecido a el de randomforest, pero en ete caso de gbm lo que se busca de los árboles es que se vayan entrenando y que cada nuevo árbol vaya mejorando y quitando errores. Lo complicado fue más bien el escoger bien los hiperparámetros para no hacer un sobreajuste.
+A lo que investigué el gbm se utiliza en la predicción del fracaso empresarial, este algoritmo lo que hace es predecir que variables fueron las más relevantes para llegar a la quiebra, esto lo hacen utilizando datos como son las cifras de ventas, el activo y los gastos financieros.
+
+#### Vidrio Lizaola Alfonso Manuel.<br>
+
+
+#### Aceves Díaz César Alejandro.<br> 
+
+
