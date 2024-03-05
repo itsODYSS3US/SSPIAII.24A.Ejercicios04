@@ -181,7 +181,7 @@ Fue bastante interesante ver el algoritmo aunque al final utilizamos gbm mediant
 Asi mismo, nos costo un poco la limpieza de variables que al final no era necesaria por que con tantos datos atipicos intentamos ajustarlos de diferentes maneras a fin de de que no los hubiera, cuando nos percatamos que podiamos caer en un sobreajuste por intentarlo
 
 #### Ascencio Padilla Isaac Ulises.<br> 
-El algoritmo de gradient boostinng machine (gbm) es algo complicadod para entenderlo completamente, principalmente por la complejidad del algoritmo, ya que implica una serie de pasos iterativos para ajustar múltiples modelos débiles y combinarlos en un modelo más robusto.
+El algoritmo de gradient boostinng machine (gbm) es algo complicado para entenderlo completamente, principalmente por la complejidad del algoritmo, ya que implica una serie de pasos iterativos para ajustar múltiples modelos débiles y combinarlos en un modelo más robusto.
 Este algoritmo puede ser utilizado en la detección de fraudes, ya que puede detectar patrones anormales y acitividades fraudulentas en transacciones financieras y sistemas de seguridad.
 
 #### Becerra Ramírez Alejandro.<br>
@@ -192,5 +192,8 @@ A lo que investigué el gbm se utiliza en la predicción del fracaso empresarial
 
 
 #### Aceves Díaz César Alejandro.<br> 
-
+Lo más complicado y tedioso fue la limpieza de variables debido a la cantidad de datos 
+atípicos que existen en todas las variables. No estabamos seguros de que se debía hacer
+en ese caso: si eliminar filas de registros, ajustarlos o simplmente ignorarlos y realizar el modelo con el dataset original. Al utilizar GBM como librería para nuestro
+algoritmo, resulto fácil hacer la implementación y obtener resultados. 
 
