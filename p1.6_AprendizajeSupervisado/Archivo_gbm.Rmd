@@ -27,7 +27,9 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Bases teórico-matematicas y Funcionamiento
 
+El Gradient Boosting funciona mediante la creación de árboles de decisión secuenciales, donde cada árbol se enfoca en corregir los errores del modelo anterior1. En la primera iteración, se crea un árbol de decisión que minimiza los errores del modelo inicial. Luego, en cada iteración subsiguiente, se crea un nuevo árbol que se enfoca en los residuos (es decir, los errores) del modelo anterior. Este proceso se repite hasta que se alcanza un número predefinido de árboles (especificado por el parámetro n.trees en la función gbm()) o hasta que los errores ya no se pueden reducir significativamente.
 
+Cada árbol se construye utilizando un subconjunto de los datos (seleccionado aleatoriamente con reemplazo), lo que ayuda a mejorar la robustez del modelo y reduce la varianza. Además, en cada iteración, se aplica una tasa de aprendizaje (especificada por el parámetro shrinkage en la función gbm()) que controla cuánto contribuye cada árbol al modelo final. Esto ayuda a prevenir el sobreajuste al poner más peso en los árboles que mejoran más el modelo.
 
 ## Matriz de Correlación
 ```{r message=FALSE, warning=FALSE}
