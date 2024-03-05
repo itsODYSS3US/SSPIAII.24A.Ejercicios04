@@ -177,7 +177,8 @@ grid.arrange(p1, p2, p3, ncol = 3)
 ## Conclusiones personales 
 
 #### Gómez Plascencia Waldo.<br> 
-
+Fue bastante interesante ver el algoritmo aunque al final utilizamos gbm mediante una libreria, el proceso interno investigado es lo importante, donde pasan la evaluacion de los submodelos y son evaluados y ajustados para lograr un modelo decente.
+Asi mismo, nos costo un poco la limpieza de variables que al final no era necesaria por que con tantos datos atipicos intentamos ajustarlos de diferentes maneras a fin de de que no los hubiera, cuando nos percatamos que podiamos caer en un sobreajuste por intentarlo
 
 #### Ascencio Padilla Isaac Ulises.<br> 
 El algoritmo de gradient boostinng machine (gbm) es algo complicadod para entenderlo completamente, principalmente por la complejidad del algoritmo, ya que implica una serie de pasos iterativos para ajustar múltiples modelos débiles y combinarlos en un modelo más robusto.
