@@ -180,10 +180,11 @@ grid.arrange(p1, p2, p3, ncol = 3)
 
 
 #### Ascencio Padilla Isaac Ulises.<br> 
-
+El algoritmo de gradient boostinng machine (gbm) es algo complicadod para entenderlo completamente, principalmente por la complejidad del algoritmo, ya que implica una serie de pasos iterativos para ajustar múltiples modelos débiles y combinarlos en un modelo más robusto.
+Este algoritmo puede ser utilizado en la detección de fraudes, ya que puede detectar patrones anormales y acitividades fraudulentas en transacciones financieras y sistemas de seguridad.
 
 #### Becerra Ramírez Alejandro.<br>
-Realmente no fue tan complicado comprender el algoritmo ya que es parecido a el de randomforest, pero en ete caso de gbm lo que se busca de los árboles es que se vayan entrenando y que cada nuevo árbol vaya mejorando y quitando errores. Lo complicado fue más bien el escoger bien los hiperparámetros para no hacer un sobreajuste.
+Realmente no fue tan complicado comprender el algoritmo ya que es parecido a el de randomforest, pero en este caso de gbm lo que se busca de los árboles es que se vayan entrenando y que cada nuevo árbol vaya mejorando y quitando errores. Lo complicado fue más bien el escoger bien los hiperparámetros para no hacer un sobreajuste.
 A lo que investigué el gbm se utiliza en la predicción del fracaso empresarial, este algoritmo lo que hace es predecir que variables fueron las más relevantes para llegar a la quiebra, esto lo hacen utilizando datos como son las cifras de ventas, el activo y los gastos financieros.
 
 #### Vidrio Lizaola Alfonso Manuel.<br>

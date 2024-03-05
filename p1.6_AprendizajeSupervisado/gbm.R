@@ -125,3 +125,10 @@ library(gridExtra)
 
 # Combinar los tres gráficos en una cuadrícula
 grid.arrange(p1, p2, p3, ncol = 3)
+
+#Evaluar el rendimiento de los modelos
+confusionMatrix(as.factor(Y.pred), as.factor(df.Wine.Test$quality), mode = "everything")
+confusionMatrix(as.factor(Y.pred2), as.factor(df.Wine.Test$quality), mode = "everything")
+confusionMatrix(as.factor(Y.pred3), as.factor(df.Wine.Test$quality), mode = "everything")
+
+
