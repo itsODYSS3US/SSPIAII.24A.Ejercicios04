@@ -1,201 +1,166 @@
+SELECT nombre, apellido FROM usuarios WHERE edad > 18;
+INSERT INTO productos (nombre, precio) VALUES ('Laptop', 1200);
+UPDATE clientes SET email = 'nuevo@email.com' WHERE id_cliente = 10;
+DELETE FROM pedidos WHERE fecha < '2023-01-01';
+SELECT * FROM libros ORDER BY titulo ASC LIMIT 10;
+SELECT nombre, apellido FROM usuarios WHERE edad > 18;
+INSERT INTO productos (nombre, precio) VALUES ('Smartphone', 800);
+UPDATE clientes SET telefono = '123456789' WHERE id_cliente = 5;
+DELETE FROM pedidos WHERE fecha < '2022-06-01';
+SELECT * FROM libros WHERE autor = 'Gabriel García Márquez';
+INSERT INTO empleados (nombre, salario) VALUES ('Ana Pérez', 2500);
+UPDATE proveedores SET direccion = 'Calle Principal, 123' WHERE id_proveedor = 15;
+DELETE FROM comentarios WHERE fecha_publicacion < '2023-05-01';
+SELECT nombre, edad FROM estudiantes WHERE carrera = 'Ingeniería';
+INSERT INTO productos (nombre, precio) VALUES ('Tablet', 400);
+UPDATE clientes SET nombre = 'Juan Pérez' WHERE id_cliente = 20;
+DELETE FROM compras WHERE fecha < '2023-03-15';
+SELECT * FROM peliculas WHERE genero = 'Comedia' ORDER BY año_estreno DESC LIMIT 5;
+INSERT INTO empleados (nombre, salario) VALUES ('Pedro López', 2800);
+UPDATE proveedores SET telefono = '987654321' WHERE id_proveedor = 8;
+DELETE FROM comentarios WHERE usuario_id = 25;
+SELECT nombre, apellido FROM clientes WHERE edad >= 25;
+INSERT INTO productos (nombre, precio) VALUES ('Cámara', 600);
+UPDATE empleados SET departamento = 'Ventas' WHERE id_empleado = 12;
+DELETE FROM pedidos WHERE fecha_entrega < '2023-07-01';
+SELECT * FROM libros WHERE autor = 'J.K. Rowling' ORDER BY año_publicacion DESC LIMIT 3;
+INSERT INTO empleados (nombre, salario) VALUES ('María García', 2700);
+UPDATE proveedores SET email = 'info@nuevoproveedor.com' WHERE id_proveedor = 3;
+DELETE FROM comentarios WHERE usuario_id = 30;
+SELECT nombre, apellido FROM usuarios WHERE edad BETWEEN 20 AND 30;
+INSERT INTO productos (nombre, precio) VALUES ('Impresora', 300);
+UPDATE clientes SET direccion = 'Avenida Libertad, 456' WHERE id_cliente = 7;
+DELETE FROM compras WHERE fecha < '2023-04-01';
+SELECT * FROM peliculas WHERE duracion >= 120;
+INSERT INTO empleados (nombre, salario) VALUES ('Carlos Martínez', 2600);
+UPDATE proveedores SET ciudad = 'Barcelona' WHERE id_proveedor = 11;
+DELETE FROM comentarios WHERE usuario_id = 35;
+SELECT nombre, apellido FROM clientes WHERE edad <= 30;
+INSERT INTO productos (nombre, precio) VALUES ('Teclado', 50);
+UPDATE empleados SET cargo = 'Gerente' WHERE id_empleado = 18;
+DELETE FROM pedidos WHERE fecha_entrega < '2023-08-01';
+SELECT * FROM libros WHERE genero = 'Ciencia Ficción' ORDER BY autor ASC LIMIT 5;
+INSERT INTO empleados (nombre, salario) VALUES ('Laura Pérez', 2900);
+UPDATE proveedores SET telefono = '654987321' WHERE id_proveedor = 6;
+DELETE FROM comentarios WHERE usuario_id = 40;
+SELECT nombre, apellido FROM usuarios WHERE edad > 25;
+INSERT INTO productos (nombre, precio) VALUES ('Monitor', 200);
+UPDATE clientes SET email = 'nuevoemail@cliente.com' WHERE id_cliente = 14;
+DELETE FROM compras WHERE fecha < '2023-06-01';
+SELECT * FROM peliculas WHERE clasificacion = 'PG-13';
+INSERT INTO empleados (nombre, salario) VALUES ('Luis Rodríguez', 2800);
+UPDATE proveedores SET direccion = 'Calle Mayor, 789' WHERE id_proveedor = 9;
+DELETE FROM comentarios WHERE usuario_id = 45;
+SELECT nombre, apellido FROM clientes WHERE edad >= 20 AND edad <= 30;
+INSERT INTO productos (nombre, precio) VALUES ('Altavoces', 100);
+UPDATE empleados SET departamento = 'Recursos Humanos' WHERE id_empleado = 22;
+DELETE FROM pedidos WHERE fecha_entrega < '2023-09-01';
+SELECT * FROM libros WHERE año_publicacion > 2000 ORDER BY titulo DESC LIMIT 5;
+INSERT INTO empleados (nombre, salario) VALUES ('Elena Gómez', 2700);
+UPDATE proveedores SET email = 'contacto@nuevoproveedor.com' WHERE id_proveedor = 7;
+DELETE FROM comentarios WHERE usuario_id = 50;
+SELECT nombre, apellido FROM usuarios WHERE edad < 30;
+INSERT INTO productos (nombre, precio) VALUES ('Ratón', 20);
+UPDATE clientes SET direccion = 'Calle Principal, 789' WHERE id_cliente = 18;
+DELETE FROM compras WHERE fecha < '2023-07-01';
+SELECT * FROM peliculas WHERE año_estreno >= 2010;
+INSERT INTO empleados (nombre, salario) VALUES ('Mario Martínez', 2900);
+UPDATE proveedores SET ciudad = 'Valencia' WHERE id_proveedor = 14;
+DELETE FROM comentarios WHERE usuario_id = 55;
+SELECT nombre, apellido FROM clientes WHERE edad > 30;
+INSERT INTO productos (nombre, precio) VALUES ('Disco Duro', 150);
+UPDATE empleados SET cargo = 'Supervisor' WHERE id_empleado = 28;
+DELETE FROM pedidos WHERE fecha_entrega < '2023-10-01';
+SELECT * FROM libros WHERE autor = 'Stephen King' ORDER BY año_publicacion DESC LIMIT 3;
+INSERT INTO empleados (nombre, salario) VALUES ('Sofía López', 2800);
+UPDATE proveedores SET telefono = '123456789' WHERE id_proveedor = 5;
+DELETE FROM comentarios WHERE usuario_id = 60;
+SELECT nombre, apellido FROM usuarios WHERE edad BETWEEN 25 AND 35;
+INSERT INTO productos (nombre, precio) VALUES ('Impresora', 250);
+UPDATE clientes SET direccion = 'Calle Libertad, 123' WHERE id_cliente = 22;
+DELETE FROM compras WHERE fecha < '2023-08-01';
+SELECT * FROM peliculas WHERE clasificacion = 'R';
+INSERT INTO empleados (nombre, salario) VALUES ('Javier Fernández', 2700);
+UPDATE proveedores SET email = 'info@nuevoproveedor.com' WHERE id_proveedor = 4;
+DELETE FROM comentarios WHERE usuario_id = 65;
+SELECT nombre, apellido FROM usuarios WHERE edad > 20;
+INSERT INTO productos (nombre, precio) VALUES ('Teclado', 40);
+UPDATE clientes SET telefono = '987654321' WHERE id_cliente = 15;
+DELETE FROM pedidos WHERE fecha_entrega < '2023-11-01';
+SELECT * FROM libros WHERE año_publicacion > 2015 ORDER BY titulo ASC LIMIT 5;
+INSERT INTO empleados (nombre, salario) VALUES ('Ana Martínez', 2800);
+UPDATE proveedores SET ciudad = 'Madrid' WHERE id_proveedor = 12;
+DELETE FROM comentarios WHERE usuario_id = 70;
+SELECT nombre, apellido FROM clientes WHERE edad >= 18 AND edad <= 25;
+INSERT INTO productos (nombre, precio) VALUES ('Monitor', 180);
+UPDATE empleados SET cargo = 'Jefe de Proyecto' WHERE id_empleado = 32;
+DELETE FROM pedidos WHERE fecha_entrega < '2023-12-01';
+SELECT * FROM peliculas WHERE año_estreno >= 2005;
+INSERT INTO empleados (nombre, salario) VALUES ('Sara López', 2900);
+UPDATE proveedores SET email = 'contacto@nuevoproveedor.com' WHERE id_proveedor = 2;
+DELETE FROM comentarios WHERE usuario_id = 75;
+SELECT nombre, apellido FROM usuarios WHERE edad < 25;
+INSERT INTO productos (nombre, precio) VALUES ('Ratón', 15);
+UPDATE clientes SET direccion = 'Calle Mayor, 456' WHERE id_cliente = 12;
+DELETE FROM compras WHERE fecha < '2023-09-01';
+SELECT nombre, apellido FROM usuarios WHERE edad >= 30;
+INSERT INTO productos (nombre, precio) VALUES ('Disco SSD', 120);
+UPDATE clientes SET email = 'nuevo@email.com' WHERE id_cliente = 8;
+DELETE FROM pedidos WHERE fecha < '2023-10-01';
+SELECT * FROM libros WHERE autor = 'Haruki Murakami';
+INSERT INTO empleados (nombre, salario) VALUES ('Marta Sánchez', 2800);
+UPDATE proveedores SET telefono = '654987321' WHERE id_proveedor = 10;
+DELETE FROM comentarios WHERE fecha_publicacion < '2023-06-01';
+SELECT nombre, edad FROM estudiantes WHERE carrera = 'Medicina';
+INSERT INTO productos (nombre, precio) VALUES ('Altavoces Bluetooth', 80);
+UPDATE clientes SET nombre = 'Ana Martínez' WHERE id_cliente = 25;
+DELETE FROM compras WHERE fecha < '2023-10-01';
+SELECT * FROM peliculas WHERE genero = 'Drama' ORDER BY año_estreno DESC LIMIT 5;
+INSERT INTO empleados (nombre, salario) VALUES ('David Pérez', 2700);
+UPDATE proveedores SET direccion = 'Calle Principal, 456' WHERE id_proveedor = 13;
+DELETE FROM comentarios WHERE fecha_publicacion < '2023-07-01';
+SELECT nombre, apellido FROM clientes WHERE edad <= 35;
+INSERT INTO productos (nombre, precio) VALUES ('Impresora Multifunción', 200);
+UPDATE empleados SET departamento = 'Contabilidad' WHERE id_empleado = 42;
+DELETE FROM pedidos WHERE fecha_entrega < '2023-11-01';
 SELECT * FROM usuarios;
-
 SELECT nombre, correo FROM usuarios WHERE activo = 1;
-
 SELECT COUNT(*) AS total_productos FROM productos;
-
 SELECT nombre, precio FROM productos WHERE precio > 100;
-
-SELECT clientes.nombre, SUM(ventas.total) AS total_ventas
-FROM clientes
-INNER JOIN ventas ON clientes.id = ventas.cliente_id
-GROUP BY clientes.id;
-
-SELECT productos.nombre, detalles_pedido.cantidad
-FROM detalles_pedido
-INNER JOIN productos ON detalles_pedido.producto_id = productos.id;
-
-SELECT DATE(fecha), AVG(tiempo_en_sitio) AS promedio_tiempo
-FROM actividad_usuario
-GROUP BY DATE(fecha);
-
-SELECT usuarios.nombre
-FROM usuarios
-LEFT JOIN ventas ON usuarios.id = ventas.usuario_id
-WHERE ventas.fecha IS NULL OR ventas.fecha < DATE_SUB(NOW(), INTERVAL 1 MONTH);
-
-SELECT clientes.nombre, MAX(ventas.total) AS pedido_mas_grande
-FROM clientes
-INNER JOIN ventas ON clientes.id = ventas.cliente_id;
-
-SELECT productos.nombre AS producto_mas_vendido, SUM(detalles_pedido.cantidad) AS cantidad_total_vendida
-FROM detalles_pedido
-INNER JOIN productos ON detalles_pedido.producto_id = productos.id
-GROUP BY detalles_pedido.producto_id
-ORDER BY SUM(detalles_pedido.cantidad) DESC
-LIMIT 1;
-
-SELECT YEAR(fecha) AS año, MONTH(fecha) AS mes, SUM(total) AS total_ventas
-FROM ventas
-GROUP BY YEAR(fecha), MONTH(fecha)
-ORDER BY YEAR(fecha), MONTH(fecha);
-
-SELECT cliente_id
-FROM ventas
-WHERE fecha >= DATE_SUB(NOW(), INTERVAL 1 YEAR)
-GROUP BY cliente_id
-HAVING COUNT(DISTINCT MONTH(fecha)) = 12;
-
-SELECT id, nombre
-FROM productos
-WHERE id NOT IN (SELECT DISTINCT producto_id FROM detalles_pedido);
-
-SELECT AVG(num_productos) AS promedio_productos_por_pedido
-FROM (
-    SELECT venta_id, COUNT(*) AS num_productos
-    FROM detalles_pedido
-    GROUP BY venta_id
-) AS subquery;
-
-SELECT clientes.nombre
-FROM clientes
-INNER JOIN (
-    SELECT cliente_id, SUM(total) AS total_gastado
-    FROM ventas
-    GROUP BY cliente_id
-) AS subquery ON clientes.id = subquery.cliente_id
-WHERE subquery.total_gastado > 1000;
-
-SELECT categorias.nombre AS categoria, SUM(ventas.total) AS total_ventas
-FROM ventas
-INNER JOIN detalles_pedido ON ventas.id = detalles_pedido.venta_id
-INNER JOIN productos ON detalles_pedido.producto_id = productos.id
-INNER JOIN categorias ON productos.categoria_id = categorias.id
-GROUP BY categorias.nombre;
-
-SELECT clientes.nombre
-FROM clientes
-INNER JOIN (
-    SELECT cliente_id
-    FROM detalles_pedido
-    INNER JOIN productos ON detalles_pedido.producto_id = productos.id
-    GROUP BY cliente_id
-    HAVING COUNT(DISTINCT productos.categoria_id) > 1
-) AS subquery ON clientes.id = subquery.cliente_id;
-
-SELECT mes_actual, 
-       total_ventas, 
-       (total_ventas - LAG(total_ventas) OVER (ORDER BY mes_actual)) / LAG(total_ventas) OVER (ORDER BY mes_actual) AS crecimiento_porcentaje
-FROM (
-    SELECT DATE_FORMAT(fecha, '%Y-%m') AS mes_actual, 
-           SUM(total) AS total_ventas
-    FROM ventas
-    GROUP BY DATE_FORMAT(fecha, '%Y-%m')
-) AS ventas_mes;
-
-SELECT cliente_id
-FROM (
-    SELECT cliente_id, 
-           fecha, 
-           DATEDIFF(fecha, FIRST_VALUE(fecha) OVER (PARTITION BY cliente_id ORDER BY fecha)) AS dias_despues_primera_compra
-    FROM ventas
-) AS subquery
-WHERE dias_despues_primera_compra = 60;
-
-SELECT cliente_id, 
-       COUNT(*) AS compras_en_mes
-FROM ventas
-WHERE MONTH(fecha) = 1 AND YEAR(fecha) = 2024
-GROUP BY cliente_id
-HAVING COUNT(*) > 5;
-
-SELECT DAYNAME(fecha) AS dia_semana, SUM(total) AS total_ventas
-FROM ventas
-GROUP BY DAYNAME(fecha);
-
-SELECT id, nombre, precio
-FROM productos
-WHERE precio > (SELECT AVG(precio) FROM productos);
-
-CREATE TABLE Peliculas (
-    id_pelicula INT PRIMARY KEY AUTO_INCREMENT,
-    titulo VARCHAR(100) NOT NULL,
-    director VARCHAR(50),
-    año_lanzamiento INT,
-    genero VARCHAR(50)
-);
-
+SELECT clientes.nombre, SUM(ventas.total) AS total_ventas FROM clientes INNER JOIN ventas ON clientes.id = ventas.cliente_i GROUP BY clientes.id;
+SELECT productos.nombre, detalles_pedido.cantidad FROM detalles_pedido INNER JOIN productos ON detalles_pedido.producto_id = productos.id;
+SELECT DATE(fecha), AVG(tiempo_en_sitio) AS promedio_tiempo FROM actividad_usuario GROUP BY DATE(fecha);
+SELECT usuarios.nombre FROM usuarios LEFT JOIN ventas ON usuarios.id = ventas.usuario_id WHERE ventas.fecha IS NULL OR ventas.fecha < DATE_SUB(NOW(), INTERVAL 1 MONTH);
+SELECT clientes.nombre, MAX(ventas.total) AS pedido_mas_grande FROM clientes INNER JOIN ventas ON clientes.id = ventas.cliente_id;
+SELECT YEAR(fecha) AS año, MONTH(fecha) AS mes, SUM(total) AS total_ventas FROM ventas GROUP BY YEAR(fecha), MONTH(fecha) ORDER BY YEAR(fecha), MONTH(fecha);
+SELECT cliente_id FROM ventas WHERE fecha >= DATE_SUB(NOW(), INTERVAL 1 YEAR) GROUP BY cliente_id HAVING COUNT(DISTINCT MONTH(fecha)) = 12;
+SELECT id, nombre FROM productos WHERE id NOT IN (SELECT DISTINCT producto_id FROM detalles_pedido);
+SELECT AVG(num_productos) AS promedio_productos_por_pedido FROM ( SELECT venta_id, COUNT(*) AS num_productos FROM detalles_pedido GROUP BY venta_id ) AS subquery;
+SELECT clientes.nombre FROM clientes INNER JOIN (SELECT cliente_id, SUM(total) AS total_gastado FROM ventas GROUP BY cliente_id) AS subquery ON clientes.id = subquery.cliente_id WHERE subquery.total_gastado > 1000;
+SELECT cliente_id FROM (SELECT cliente_id, fecha, DATEDIFF(fecha, FIRST_VALUE(fecha) OVER (PARTITION BY cliente_id ORDER BY fecha)) AS dias_despues_primera_compra FROM ventas) AS subquery WHERE dias_despues_primera_compra = 60;
+SELECT cliente_id, COUNT(*) AS compras_en_mes FROM ventas WHERE MONTH(fecha) = 1 AND YEAR(fecha) = 2024 GROUP BY cliente_id HAVING COUNT(*) > 5;
+SELECT DAYNAME(fecha) AS dia_semana, SUM(total) AS total_ventas FROM ventas GROUP BY DAYNAME(fecha);
+SELECT id, nombre, precio FROM productos WHERE precio > (SELECT AVG(precio) FROM productos);
+CREATE TABLE Peliculas (id_pelicula INT PRIMARY KEY AUTO_INCREMENT, titulo VARCHAR(100) NOT NULL, director VARCHAR(50),año_lanzamiento INT, genero VARCHAR(50));
 ALTER TABLE Peliculas ADD pais_origen VARCHAR(50);
-
 ALTER TABLE Peliculas MODIFY COLUMN año_lanzamiento VARCHAR(4); 
-
 ALTER TABLE Peliculas DROP COLUMN pais_origen;
-
 ALTER TABLE Actores RENAME TO Elenco;
-
-INSERT INTO Peliculas (titulo, director, año_lanzamiento, genero) 
-VALUES ('El Señor de los Anillos', 'Peter Jackson', '2001', 'Fantasía');
-
+INSERT INTO Peliculas (titulo, director, año_lanzamiento, genero) VALUES ('El Señor de los Anillos', 'Peter Jackson', '2001', 'Fantasía');
 DELETE FROM Peliculas WHERE id_pelicula = 5;
-
-INSERT INTO Elenco (nombre, apellido, fecha_nacimiento, nacionalidad) VALUES 
-('Emma', 'Stone', '1988-11-06', 'Estadounidense'),
-('Tom', 'Hanks', '1956-07-09', 'Estadounidense');
-
+INSERT INTO Elenco (nombre, apellido, fecha_nacimiento, nacionalidad) VALUES  ('Emma', 'Stone', '1988-11-06', 'Estadounidense'), ('Tom', 'Hanks', '1956-07-09', 'Estadounidense');
 UPDATE Elenco SET nacionalidad = 'Clásico' WHERE fecha_nacimiento < '1980-01-01'; 
-
-CREATE TABLE Reparto (
-    id_pelicula INT,
-    id_actor INT,
-    personaje VARCHAR(50),
-    PRIMARY KEY (id_pelicula, id_actor),
-    FOREIGN KEY (id_pelicula) REFERENCES Peliculas(id_pelicula),
-    FOREIGN KEY (id_actor) REFERENCES Elenco(id_actor)
-);
-
-SELECT p.titulo, e.nombre, e.apellido
-FROM Peliculas p
-INNER JOIN Reparto r ON p.id_pelicula = r.id_pelicula
-INNER JOIN Elenco e ON r.id_actor = e.id_actor;
-
-SELECT titulo 
-FROM Peliculas p
-LEFT JOIN Reparto r ON p.id_pelicula = r.id_pelicula
-WHERE r.id_actor IS NULL;
-
+SELECT p.titulo, e.nombre, e.apellido FROM Peliculas p INNER JOIN Reparto r ON p.id_pelicula = r.id_pelicula INNER JOIN Elenco e ON r.id_actor = e.id_actor;
+SELECT titulo FROM Peliculas p LEFT JOIN Reparto r ON p.id_pelicula = r.id_pelicula WHERE r.id_actor IS NULL;
 ALTER TABLE Usuarios ADD pais VARCHAR(50);
-
 ALTER TABLE Usuarios MODIFY COLUMN edad VARCHAR(3); 
-
 ALTER TABLE Usuarios DROP COLUMN pais;
-
 ALTER TABLE Usuarios RENAME TO Clientes;
-
-SELECT titulo
-FROM Peliculas
-WHERE genero = (SELECT genero FROM Peliculas WHERE titulo = 'El Señor de los Anillos');
-
-SELECT nombre, apellido
-FROM Elenco
-WHERE fecha_nacimiento IN (
-    SELECT MIN(fecha_nacimiento) FROM Elenco
-);
-
-UPDATE Peliculas p
-INNER JOIN Elenco e ON p.director = CONCAT(e.nombre, ' ', e.apellido)
-SET p.genero = 'Clásico'
-WHERE e.apellido = 'Spielberg'; 
-
-DELETE p
-FROM Peliculas p
-INNER JOIN Reparto r ON p.id_pelicula = r.id_pelicula
-WHERE r.id_actor = 123;
-
-SELECT director, COUNT(*) AS num_peliculas
-FROM Peliculas
-GROUP BY director
-ORDER BY num_peliculas DESC;
-
+SELECT titulo FROM Peliculas WHERE genero = (SELECT genero FROM Peliculas WHERE titulo = 'El Señor de los Anillos');
+SELECT nombre, apellido FROM Elenco WHERE fecha_nacimiento IN (SELECT MIN(fecha_nacimiento) FROM Elenco);
+UPDATE Peliculas p INNER JOIN Elenco e ON p.director = CONCAT(e.nombre, ' ', e.apellido) SET p.genero = 'Clásico' WHERE e.apellido = 'Spielberg'; 
+DELETE p FROM Peliculas p INNER JOIN Reparto r ON p.id_pelicula = r.id_pelicula WHERE r.id_actor = 123;
+SELECT director, COUNT(*) AS num_peliculas FROM PeliculasGROUP BY director ORDER BY num_peliculas DESC;
 SELECT * FROM libros WHERE autor = 'Paulo Coelho' ORDER BY año_publicacion DESC LIMIT 3;
 INSERT INTO empleados (nombre, salario) VALUES ('Jorge Rodríguez', 2900);
 UPDATE proveedores SET email = 'info@nuevoproveedor.com' WHERE id_proveedor = 1;
@@ -314,20 +279,3 @@ UPDATE proveedores SET email = 'info@nuevoproveedor.com' WHERE id_proveedor = 26
 DELETE FROM comentarios WHERE fecha_publicacion < '2024-09-01';
 SELECT nombre, apellido FROM usuarios WHERE edad < 40;
 INSERT INTO productos (nombre, precio) VALUES ('Cable HDMI', 5);
-SELECT p.nombres, r.rol, u.username FROM personas AS p LEFT JOIN usuarios AS u ON  p.idpersonas = u.persona
-LEFT JOIN roles AS r ON u.rol = r.idroles;
-SELECT pub.texto, pub.fechapub, impub.ruta AS impub, CONCAT (p.nombres, ' ', p.apellidos) AS nomcom, perf.ruta AS perf, 
-COUNT(DISTINCT likes.persona) AS nlikes, COUNT(DISTINCT comentarios.idcomentario) AS ncoment FROM publicaciones AS pub
-LEFT JOIN personas AS p ON pub.persona = p.idpersonas LEFT JOIN archivos AS perf ON perf.idarchivos = p.fotoperfil 
-LEFT JOIN archivos AS impub ON impub.idarchivos = pub.archivo LEFT JOIN likes ON pub.idpublicaciones = likes.publicacion
-LEFT JOIN comentarios ON pub.idpublicaciones = comentarios.publicacion
-GROUP BY pub.idpublicaciones;
-SELECT pub.texto, pub.fechapub, impub.ruta, CONCAT (p.nombres, ' ', p.apellidos) AS nomcom, perf.ruta AS perf, COUNT(likes.persona) AS cantidad_likes FROM publicaciones AS pub
-LEFT JOIN personas AS p ON pub.persona = p.idpersonas LEFT JOIN archivos AS perf ON perf.idarchivos = p.fotoperfil 
-LEFT JOIN archivos AS impub ON impub.idarchivos = pub.archivo LEFT JOIN likes ON pub.idpublicaciones = likes.publicacion
-GROUP BY pub.idpublicaciones;
-SELECT CONCAT (p.nombres, ' ', p.apellidos) AS nomcom, per.ruta AS perf, por.ruta AS por FROM personas AS p
-LEFT JOIN archivos AS per ON per.idarchivos = p.fotoperfil LEFT JOIN archivos AS por ON por.idarchivos = p.fotoportada;
-SELECT a.persona1, CONCAT (p.nombres, ' ', p.apellidos), ar.ruta AS nomcom FROM amigos AS a 
-LEFT JOIN personas AS p ON a.persona2 = p.idpersonas
-LEFT JOIN archivos AS ar ON ar.idarchivos = p.fotoperfil;
