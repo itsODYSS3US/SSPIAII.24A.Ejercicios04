@@ -40,16 +40,17 @@ corrplot(cor.Wine,
 #density
 #citric.acid
 #total.sulfur.dioxide
-gbm.fit <- gbm(quality ~ ., data = df.Wine.Train, distribution = "gaussian", n.trees = 1000, interaction.depth = 3, shrinkage = 0.01, cv.folds = 5, verbose = T)
+gbm.fit <- gbm(quality ~ ., data = df.Wine.Train, distribution = "gaussian", n.trees = 500, interaction.depth = 4, shrinkage = 0.01, cv.folds = 5, verbose = T)
 summary(gbm.fit)
 
-gbm.fit2 <- gbm(quality ~ alcohol + volatile.acidity + sulphates, data = df.Wine.Train, distribution = "gaussian", n.trees = 1000, interaction.depth = 3, shrinkage = 0.01, cv.folds = 5, verbose = T)
+gbm.fit2 <- gbm(quality ~ alcohol + volatile.acidity + sulphates, data = df.Wine.Train, distribution = "gaussian", n.trees = 500, interaction.depth = 3, shrinkage = 0.01, cv.folds = 5, verbose = T)
 summary(gbm.fit2)
 
-gbm.fit3 <- gbm(quality ~ density + citric.acid + total.sulfur.dioxide, data = df.Wine.Train, distribution = "gaussian", n.trees = 1000, interaction.depth = 3, shrinkage = 0.01, cv.folds = 5, verbose = T)
+gbm.fit3 <- gbm(quality ~ density + citric.acid + total.sulfur.dioxide, data = df.Wine.Train, distribution = "gaussian", n.trees = 500, interaction.depth = 3, shrinkage = 0.01, cv.folds = 5, verbose = T)
 summary(gbm.fit3)
 
 mdl.Predict <- predict(object = gbm.fit, newdata = df.Wine.Test)
+summary(mdl.Predict)
 mdl.Predict2 <- predict(object = gbm.fit2, newdata = df.Wine.Test)
 mdl.Predict3 <- predict(object = gbm.fit3, newdata = df.Wine.Test)
 

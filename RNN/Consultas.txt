@@ -116,3 +116,82 @@ GROUP BY DAYNAME(fecha);
 SELECT id, nombre, precio
 FROM productos
 WHERE precio > (SELECT AVG(precio) FROM productos);
+
+CREATE TABLE Peliculas (
+    id_pelicula INT PRIMARY KEY AUTO_INCREMENT,
+    titulo VARCHAR(100) NOT NULL,
+    director VARCHAR(50),
+    año_lanzamiento INT,
+    genero VARCHAR(50)
+);
+
+ALTER TABLE Peliculas ADD pais_origen VARCHAR(50);
+
+ALTER TABLE Peliculas MODIFY COLUMN año_lanzamiento VARCHAR(4); 
+
+ALTER TABLE Peliculas DROP COLUMN pais_origen;
+
+ALTER TABLE Actores RENAME TO Elenco;
+
+INSERT INTO Peliculas (titulo, director, año_lanzamiento, genero) 
+VALUES ('El Señor de los Anillos', 'Peter Jackson', '2001', 'Fantasía');
+
+DELETE FROM Peliculas WHERE id_pelicula = 5;
+
+INSERT INTO Elenco (nombre, apellido, fecha_nacimiento, nacionalidad) VALUES 
+('Emma', 'Stone', '1988-11-06', 'Estadounidense'),
+('Tom', 'Hanks', '1956-07-09', 'Estadounidense');
+
+UPDATE Elenco SET nacionalidad = 'Clásico' WHERE fecha_nacimiento < '1980-01-01'; 
+
+CREATE TABLE Reparto (
+    id_pelicula INT,
+    id_actor INT,
+    personaje VARCHAR(50),
+    PRIMARY KEY (id_pelicula, id_actor),
+    FOREIGN KEY (id_pelicula) REFERENCES Peliculas(id_pelicula),
+    FOREIGN KEY (id_actor) REFERENCES Elenco(id_actor)
+);
+
+SELECT p.titulo, e.nombre, e.apellido
+FROM Peliculas p
+INNER JOIN Reparto r ON p.id_pelicula = r.id_pelicula
+INNER JOIN Elenco e ON r.id_actor = e.id_actor;
+
+SELECT titulo 
+FROM Peliculas p
+LEFT JOIN Reparto r ON p.id_pelicula = r.id_pelicula
+WHERE r.id_actor IS NULL;
+
+ALTER TABLE Usuarios ADD pais VARCHAR(50);
+
+ALTER TABLE Usuarios MODIFY COLUMN edad VARCHAR(3); 
+
+ALTER TABLE Usuarios DROP COLUMN pais;
+
+ALTER TABLE Usuarios RENAME TO Clientes;
+
+SELECT titulo
+FROM Peliculas
+WHERE genero = (SELECT genero FROM Peliculas WHERE titulo = 'El Señor de los Anillos');
+
+SELECT nombre, apellido
+FROM Elenco
+WHERE fecha_nacimiento IN (
+    SELECT MIN(fecha_nacimiento) FROM Elenco
+);
+
+UPDATE Peliculas p
+INNER JOIN Elenco e ON p.director = CONCAT(e.nombre, ' ', e.apellido)
+SET p.genero = 'Clásico'
+WHERE e.apellido = 'Spielberg'; 
+
+DELETE p
+FROM Peliculas p
+INNER JOIN Reparto r ON p.id_pelicula = r.id_pelicula
+WHERE r.id_actor = 123;
+
+SELECT director, COUNT(*) AS num_peliculas
+FROM Peliculas
+GROUP BY director
+ORDER BY num_peliculas DESC;
