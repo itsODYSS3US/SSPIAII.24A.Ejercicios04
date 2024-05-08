@@ -1,0 +1,118 @@
+SELECT * FROM usuarios;
+
+SELECT nombre, correo FROM usuarios WHERE activo = 1;
+
+SELECT COUNT(*) AS total_productos FROM productos;
+
+SELECT nombre, precio FROM productos WHERE precio > 100;
+
+SELECT clientes.nombre, SUM(ventas.total) AS total_ventas
+FROM clientes
+INNER JOIN ventas ON clientes.id = ventas.cliente_id
+GROUP BY clientes.id;
+
+SELECT productos.nombre, detalles_pedido.cantidad
+FROM detalles_pedido
+INNER JOIN productos ON detalles_pedido.producto_id = productos.id;
+
+SELECT DATE(fecha), AVG(tiempo_en_sitio) AS promedio_tiempo
+FROM actividad_usuario
+GROUP BY DATE(fecha);
+
+SELECT usuarios.nombre
+FROM usuarios
+LEFT JOIN ventas ON usuarios.id = ventas.usuario_id
+WHERE ventas.fecha IS NULL OR ventas.fecha < DATE_SUB(NOW(), INTERVAL 1 MONTH);
+
+SELECT clientes.nombre, MAX(ventas.total) AS pedido_mas_grande
+FROM clientes
+INNER JOIN ventas ON clientes.id = ventas.cliente_id;
+
+SELECT productos.nombre AS producto_mas_vendido, SUM(detalles_pedido.cantidad) AS cantidad_total_vendida
+FROM detalles_pedido
+INNER JOIN productos ON detalles_pedido.producto_id = productos.id
+GROUP BY detalles_pedido.producto_id
+ORDER BY SUM(detalles_pedido.cantidad) DESC
+LIMIT 1;
+
+SELECT YEAR(fecha) AS año, MONTH(fecha) AS mes, SUM(total) AS total_ventas
+FROM ventas
+GROUP BY YEAR(fecha), MONTH(fecha)
+ORDER BY YEAR(fecha), MONTH(fecha);
+
+SELECT cliente_id
+FROM ventas
+WHERE fecha >= DATE_SUB(NOW(), INTERVAL 1 YEAR)
+GROUP BY cliente_id
+HAVING COUNT(DISTINCT MONTH(fecha)) = 12;
+
+SELECT id, nombre
+FROM productos
+WHERE id NOT IN (SELECT DISTINCT producto_id FROM detalles_pedido);
+
+SELECT AVG(num_productos) AS promedio_productos_por_pedido
+FROM (
+    SELECT venta_id, COUNT(*) AS num_productos
+    FROM detalles_pedido
+    GROUP BY venta_id
+) AS subquery;
+
+SELECT clientes.nombre
+FROM clientes
+INNER JOIN (
+    SELECT cliente_id, SUM(total) AS total_gastado
+    FROM ventas
+    GROUP BY cliente_id
+) AS subquery ON clientes.id = subquery.cliente_id
+WHERE subquery.total_gastado > 1000;
+
+SELECT categorias.nombre AS categoria, SUM(ventas.total) AS total_ventas
+FROM ventas
+INNER JOIN detalles_pedido ON ventas.id = detalles_pedido.venta_id
+INNER JOIN productos ON detalles_pedido.producto_id = productos.id
+INNER JOIN categorias ON productos.categoria_id = categorias.id
+GROUP BY categorias.nombre;
+
+SELECT clientes.nombre
+FROM clientes
+INNER JOIN (
+    SELECT cliente_id
+    FROM detalles_pedido
+    INNER JOIN productos ON detalles_pedido.producto_id = productos.id
+    GROUP BY cliente_id
+    HAVING COUNT(DISTINCT productos.categoria_id) > 1
+) AS subquery ON clientes.id = subquery.cliente_id;
+
+SELECT mes_actual, 
+       total_ventas, 
+       (total_ventas - LAG(total_ventas) OVER (ORDER BY mes_actual)) / LAG(total_ventas) OVER (ORDER BY mes_actual) AS crecimiento_porcentaje
+FROM (
+    SELECT DATE_FORMAT(fecha, '%Y-%m') AS mes_actual, 
+           SUM(total) AS total_ventas
+    FROM ventas
+    GROUP BY DATE_FORMAT(fecha, '%Y-%m')
+) AS ventas_mes;
+
+SELECT cliente_id
+FROM (
+    SELECT cliente_id, 
+           fecha, 
+           DATEDIFF(fecha, FIRST_VALUE(fecha) OVER (PARTITION BY cliente_id ORDER BY fecha)) AS dias_despues_primera_compra
+    FROM ventas
+) AS subquery
+WHERE dias_despues_primera_compra = 60;
+
+SELECT cliente_id, 
+       COUNT(*) AS compras_en_mes
+FROM ventas
+WHERE MONTH(fecha) = 1 AND YEAR(fecha) = 2024
+GROUP BY cliente_id
+HAVING COUNT(*) > 5;
+
+SELECT DAYNAME(fecha) AS dia_semana, SUM(total) AS total_ventas
+FROM ventas
+GROUP BY DAYNAME(fecha);
+
+SELECT id, nombre, precio
+FROM productos
+WHERE precio > (SELECT AVG(precio) FROM productos);
