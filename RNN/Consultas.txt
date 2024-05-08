@@ -314,3 +314,20 @@ UPDATE proveedores SET email = 'info@nuevoproveedor.com' WHERE id_proveedor = 26
 DELETE FROM comentarios WHERE fecha_publicacion < '2024-09-01';
 SELECT nombre, apellido FROM usuarios WHERE edad < 40;
 INSERT INTO productos (nombre, precio) VALUES ('Cable HDMI', 5);
+SELECT p.nombres, r.rol, u.username FROM personas AS p LEFT JOIN usuarios AS u ON  p.idpersonas = u.persona
+LEFT JOIN roles AS r ON u.rol = r.idroles;
+SELECT pub.texto, pub.fechapub, impub.ruta AS impub, CONCAT (p.nombres, ' ', p.apellidos) AS nomcom, perf.ruta AS perf, 
+COUNT(DISTINCT likes.persona) AS nlikes, COUNT(DISTINCT comentarios.idcomentario) AS ncoment FROM publicaciones AS pub
+LEFT JOIN personas AS p ON pub.persona = p.idpersonas LEFT JOIN archivos AS perf ON perf.idarchivos = p.fotoperfil 
+LEFT JOIN archivos AS impub ON impub.idarchivos = pub.archivo LEFT JOIN likes ON pub.idpublicaciones = likes.publicacion
+LEFT JOIN comentarios ON pub.idpublicaciones = comentarios.publicacion
+GROUP BY pub.idpublicaciones;
+SELECT pub.texto, pub.fechapub, impub.ruta, CONCAT (p.nombres, ' ', p.apellidos) AS nomcom, perf.ruta AS perf, COUNT(likes.persona) AS cantidad_likes FROM publicaciones AS pub
+LEFT JOIN personas AS p ON pub.persona = p.idpersonas LEFT JOIN archivos AS perf ON perf.idarchivos = p.fotoperfil 
+LEFT JOIN archivos AS impub ON impub.idarchivos = pub.archivo LEFT JOIN likes ON pub.idpublicaciones = likes.publicacion
+GROUP BY pub.idpublicaciones;
+SELECT CONCAT (p.nombres, ' ', p.apellidos) AS nomcom, per.ruta AS perf, por.ruta AS por FROM personas AS p
+LEFT JOIN archivos AS per ON per.idarchivos = p.fotoperfil LEFT JOIN archivos AS por ON por.idarchivos = p.fotoportada;
+SELECT a.persona1, CONCAT (p.nombres, ' ', p.apellidos), ar.ruta AS nomcom FROM amigos AS a 
+LEFT JOIN personas AS p ON a.persona2 = p.idpersonas
+LEFT JOIN archivos AS ar ON ar.idarchivos = p.fotoperfil;
